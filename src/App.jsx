@@ -61,6 +61,11 @@ export const App = () => {
     setReversed(false);
   }
 
+  const isInitialOrder =
+    goodsFromServer.length === visibleGoods.length &&
+    goodsFromServer.every((g, i) => g === visibleGoods[i]);
+
+
   return (
     <div className="section content">
       <div className="buttons">
@@ -100,7 +105,7 @@ export const App = () => {
           Reverse
         </button>
 
-        {(sortField !== '' || reversed) && (
+        {!isInitialOrder && (
           <button
             type="button"
             className="button is-danger is-light"
